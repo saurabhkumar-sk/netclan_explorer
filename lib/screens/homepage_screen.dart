@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:netclan_explorer/screens/refine_screen.dart';
+import 'package:netclan_explorer/utils/my_colors.dart';
 
 class HomePageScreen extends StatefulWidget {
   const HomePageScreen({super.key});
@@ -11,12 +13,8 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 8, 57, 82),
+        backgroundColor: MyColors.blue,
         leading: Padding(
           padding: const EdgeInsets.only(left: 12.0),
           child: IconButton(
@@ -42,51 +40,44 @@ class _HomePageScreenState extends State<HomePageScreen> {
             ),
           ),
         ),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.only(
-              right: 10,
-            ),
-            child: Column(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RefineScreen()));
+            },
+            icon: const Column(
               children: [
                 Icon(
                   Icons.launch,
-                  color: Colors.white,
-                ),
-                SizedBox(
-                  height: 5,
                 ),
                 Text(
                   'Refine',
                   style: TextStyle(
+                    fontSize: 11,
                     color: Colors.white,
                   ),
-                )
+                ),
               ],
             ),
+            color: Colors.white,
           ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore_rounded),
+            icon: Icon(Icons.remove_red_eye),
             label: 'Explore',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.explore_rounded),
-          //   label: 'Explore',
-          // ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.explore_rounded),
-          //   label: 'Explore',
-          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.explore_rounded),
             label: 'Explore',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore_rounded),
+            icon: Icon(Icons.remove_red_eye),
             label: 'Explore',
           ),
         ],
