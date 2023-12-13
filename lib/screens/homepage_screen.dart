@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netclan_explorer/screens/explore_screen.dart';
 import 'package:netclan_explorer/screens/refine_screen.dart';
 import 'package:netclan_explorer/utils/my_colors.dart';
 
@@ -10,6 +11,14 @@ class HomePageScreen extends StatefulWidget {
 }
 
 class _HomePageScreenState extends State<HomePageScreen> {
+  int _currentIndex = 0;
+  final screens = [
+    const ExploreScreen(),
+    const Center(child: Text('NetWork')),
+    const Center(child: Text('Chat')),
+    const Center(child: Text('Contact')),
+    const Center(child: Text('Groups')),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +53,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
           IconButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RefineScreen()));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RefineScreen(),
+                ),
+              );
             },
             icon: const Column(
               children: [
@@ -65,23 +76,45 @@ class _HomePageScreenState extends State<HomePageScreen> {
             color: Colors.white,
           ),
         ],
+        // bottom: TabBar(tabs: [
+        //   Text('data'),
+        //   Text('data'),
+        //   Text('data'),
+        // ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          setState(() {
+            _currentIndex = value;
+          });
+        },
+        currentIndex: _currentIndex,
+        selectedItemColor: MyColors.blue,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.remove_red_eye),
-            label: 'Explore',
+              icon: Icon(Icons.remove_red_eye),
+              label: 'Explore',
+              backgroundColor: Colors.amber),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.network_check_rounded),
+            label: 'Network',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.explore_rounded),
-            label: 'Explore',
+            icon: Icon(Icons.chat),
+            label: 'Chat',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.remove_red_eye),
-            label: 'Explore',
+            icon: Icon(Icons.perm_contact_cal),
+            label: 'Contact',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group),
+            label: 'Groups',
           ),
         ],
       ),
+      body: screens[_currentIndex],
     );
   }
 }
