@@ -23,6 +23,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
             dividerHeight: 0,
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorColor: Colors.white,
+            indicatorWeight: 15,
             labelColor: Colors.white,
             labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
             tabs: [

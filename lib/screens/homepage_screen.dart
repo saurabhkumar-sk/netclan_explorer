@@ -22,6 +22,15 @@ class _HomePageScreenState extends State<HomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          backgroundColor: MyColors.lightblue,
+          onPressed: () {},
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          )),
       appBar: AppBar(
         backgroundColor: MyColors.blue,
         leading: Padding(
@@ -35,19 +44,28 @@ class _HomePageScreenState extends State<HomePageScreen> {
             ),
           ),
         ),
-        title: const ListTile(
-          title: Text(
-            'Saurabh Kumar',
-            style: TextStyle(
-              color: Colors.white,
+        title: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Saurabh Kumar',
+              style: TextStyle(color: Colors.white, fontSize: 18),
             ),
-          ),
-          subtitle: Text(
-            'Saurabh Kumar',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
+            SizedBox(height: 5),
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on,
+                  size: 15,
+                  color: Colors.white,
+                ),
+                Text(
+                  "  Udaipur , Rajasthan",
+                  style: TextStyle(color: Colors.white, fontSize: 12),
+                )
+              ],
+            )
+          ],
         ),
         actions: [
           IconButton(
@@ -76,11 +94,6 @@ class _HomePageScreenState extends State<HomePageScreen> {
             color: Colors.white,
           ),
         ],
-        // bottom: TabBar(tabs: [
-        //   Text('data'),
-        //   Text('data'),
-        //   Text('data'),
-        // ]),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
